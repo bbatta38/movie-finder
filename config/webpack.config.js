@@ -72,7 +72,11 @@ module.exports = function(webpackEnv) {
         loader: MiniCssExtractPlugin.loader,
         options: Object.assign(
           {},
-          shouldUseRelativeAssetPaths ? { publicPath: "../../" } : undefined
+          shouldUseRelativeAssetPaths
+            ? {
+                publicPath: "../../"
+              }
+            : undefined
         )
       },
       {
@@ -102,12 +106,7 @@ module.exports = function(webpackEnv) {
       }
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap
-        }
-      });
+      loaders.push(preProcessor);
     }
     return loaders;
   };
@@ -288,7 +287,11 @@ module.exports = function(webpackEnv) {
       strictExportPresence: true,
       rules: [
         // Disable require.ensure as it's not a standard language feature.
-        { parser: { requireEnsure: false } },
+        {
+          parser: {
+            requireEnsure: false
+          }
+        },
 
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
@@ -366,7 +369,9 @@ module.exports = function(webpackEnv) {
                 presets: [
                   [
                     require.resolve("babel-preset-react-app/dependencies"),
-                    { helpers: true }
+                    {
+                      helpers: true
+                    }
                   ]
                 ],
                 cacheDirectory: true,
@@ -407,6 +412,7 @@ module.exports = function(webpackEnv) {
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
+                camelCase: true, // add it to use camelcase by name of style (e.g. className={styles.appLogo} instead of className={styles["App-logo"]})
                 getLocalIdent: getCSSModuleLocalIdent
               })
             },
@@ -419,9 +425,18 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: true,
+                  camelCase: true,
+                  localIdentName: "[path][name]__[local]--[hash:base64]"
                 },
-                "sass-loader"
+                // add it use variable css
+                {
+                  loader: require.resolve("sass-loader"),
+                  options: {
+                    data: `@import "${paths.appSrc}/config/_variables.scss";`
+                  }
+                }
               ),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -438,9 +453,16 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
+                  camelCase: true,
                   getLocalIdent: getCSSModuleLocalIdent
                 },
-                "sass-loader"
+                // add it use variable css
+                {
+                  loader: require.resolve("sass-loader"),
+                  options: {
+                    data: `@import "${paths.appSrc}/config/_variables.scss";`
+                  }
+                }
               )
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
