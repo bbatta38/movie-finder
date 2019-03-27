@@ -1,0 +1,48 @@
+.container {
+  padding: 0 20px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-grow: 3;
+    .logo-text {
+      width: 60px;
+      display: inline-block;
+      margin-left: 10px;
+      color: white;
+      font-size: $big-font-size;
+      font-family: "Titillium Web", sans-serif;
+    }
+  }
+  .search-container {
+    position: relative;
+    flex-grow: 1;
+    .search-input {
+      width: 100%;
+      background: rgb(75, 75, 75);
+      color: white;
+      font-family: "Roboto", sans-serif;
+      font-size: $normal-font-size;
+      border-radius: 3px;
+      border: 0;
+      outline: 0;
+      padding: 10px;
+      padding-right: 36px;
+    }
+    .button {
+      height: 36px;
+      width: 36px;
+      background: transparent;
+      border: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      .search-icon {
+        font-size: $normal-font-size;
+      }
+    }
+  }
+}
