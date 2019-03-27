@@ -1,28 +1,21 @@
-import React, { Component } from "react";
-import logo from "images/logo.svg";
-import styles from "./App.scss";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import "./styles.scss";
 
-class App extends Component {
-  render() {
-    return (
-      <div className={styles.app}>
-        <header className={styles.appHeader}>
-          <img src={logo} className={styles.appLogo} alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className={styles.appLink}
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import Navigation from "components/Navigation";
+import Footer from "components/Footer";
+
+const App = props => [
+  <Navigation key={0} />,
+  <PublicRoute key={1} />,
+  <Footer key={2} />
+];
+
+const PublicRoute = props => (
+  <Switch>
+    <Route exact path="/" render={() => "main"} />
+    <Route exact path="/detail/:id" render={() => "detail"} />
+  </Switch>
+);
 
 export default App;
