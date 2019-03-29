@@ -31,8 +31,8 @@ const RenderLoading = props => (
 const RenderList = props => {
   const { movieList } = props;
   return (
-    <div className={styles.movieList}>
-      <ul>
+    <div className={styles.movieListContainer}>
+      <ul className={styles.movieList}>
         {movieList.results.map(movie => (
           <MovieItem {...movie} key={movie.id} />
         ))}

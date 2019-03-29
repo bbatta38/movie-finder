@@ -1,13 +1,25 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import MovieList from "./presenter";
 
 class Container extends Component {
   state = {
     loading: true
   };
+  static propTypes = {
+    getMovieList: PropTypes.func.isRequired,
+    genres: PropTypes.array,
+    pageNum: PropTypes.number,
+    movieList: PropTypes.shape({
+      page: PropTypes.number.isRequired,
+      total_pages: PropTypes.number.isRequired,
+      results: PropTypes.arrayOf(PropTypes.object),
+      total_results: PropTypes.number.isRequired
+    })
+  };
   componentDidMount() {
     const { getMovieList } = this.props;
-    getMovieList("vote_average.desc");
+    getMovieList("popularity.desc");
     /* 
         sort options
 
@@ -22,7 +34,7 @@ class Container extends Component {
      */
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.movieList) {
+    if (nextProps.movieList && nextProps.genres) {
       this.setState({
         loading: false
       });

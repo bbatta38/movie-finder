@@ -1,15 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicketAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = props => (
-  <div className={styles.container}>
-    <span className={styles.logo}>
-      <FontAwesomeIcon icon={faTicketAlt} color="white" size="2x" />
-      <span className={styles.logoText}>Movie Finder</span>
-    </span>
+  <header className={styles.container}>
+    <div className={styles.logo}>
+      <Link to="/">
+        <FontAwesomeIcon icon={faTicketAlt} color="white" size="2x" />
+        <span className={styles.logoText}>Movie Finder</span>
+      </Link>
+    </div>
     <div className={styles.searchContainer}>
       <form onSubmit={props.onSubmit}>
         <input
@@ -17,7 +20,7 @@ const Navigation = props => (
           type="search"
           value={props.searchText}
           onChange={props.onChange}
-          placeholder="movie name"
+          placeholder="Search for a movie..."
         />
         <button
           type="button"
@@ -32,7 +35,7 @@ const Navigation = props => (
         </button>
       </form>
     </div>
-  </div>
+  </header>
 );
 
 Navigation.propTypes = {

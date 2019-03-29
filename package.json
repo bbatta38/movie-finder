@@ -46,6 +46,7 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.8.5",
     "react-app-polyfill": "^0.2.2",
+    "react-circle": "^1.1.1",
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",
@@ -129,5 +130,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
   }
 }

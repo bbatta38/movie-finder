@@ -4,6 +4,7 @@ import "./styles.scss";
 
 import Navigation from "components/Navigation";
 import MovieList from "components/MovieList";
+import Detail from "components/Detail";
 import Footer from "components/Footer";
 
 const App = props => [
@@ -15,7 +16,8 @@ const App = props => [
 const PublicRoute = props => (
   <Switch>
     <Route exact path="/" component={MovieList} />
-    <Route exact path="/detail/:id" render={() => "detail"} />
+    <Route exact path="/search/:query" render={() => "search"} />
+    <Route exact path="/detail/:id" component={Detail} />
   </Switch>
 );
 

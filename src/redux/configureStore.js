@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { routerMiddleware, connectRouter } from "connected-react-router";
 import { createBrowserHistory } from "history";
+import { composeWithDevTools } from "redux-devtools-extension";
 import movie from "redux/modules/movie";
 
 const history = createBrowserHistory();
@@ -20,9 +21,14 @@ const reducers = combineReducers({
   router: connectRouter(history)
 });
 
-let store = initialState =>
-  createStore(reducers, applyMiddleware(...middlewares));
-
+let store;
+if (env === "development") {
+  store = initialState =>
+    createStore(reducers, composeWithDevTools(applyMiddleware(...middlewares)));
+} else {
+  store = initialState =>
+    createStore(reducers, applyMiddleware(...middlewares));
+}
 export { history };
 
 export default store();

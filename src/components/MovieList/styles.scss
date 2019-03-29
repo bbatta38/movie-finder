@@ -1,8 +1,12 @@
 .loading-container {
-  padding: 50px 0;
+  @include loadingContainer;
+}
+
+.movie-list-container {
+  padding: 0 20px;
+}
+
+.movie-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
   flex-wrap: wrap;
 }

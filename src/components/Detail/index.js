@@ -4,19 +4,22 @@ import { actionCreator as movieActions } from "redux/modules/movie";
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    movie: { pageNum, movieList, genres }
+    movie: { detailInfo }
   } = state;
   return {
-    pageNum,
-    genres,
-    movieList
+    detailInfo
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const {
+    match: {
+      params: { id }
+    }
+  } = ownProps;
   return {
-    getMovieList: sortBy => {
-      dispatch(movieActions.getMovies(sortBy));
+    getDetail: () => {
+      dispatch(movieActions.getDetail(id));
     }
   };
 };
