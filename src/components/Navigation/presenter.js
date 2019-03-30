@@ -7,12 +7,12 @@ import { faTicketAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = props => (
   <header className={styles.container}>
-    <div className={styles.logo}>
+    <h1 className={styles.logo}>
       <Link to="/">
         <FontAwesomeIcon icon={faTicketAlt} color="white" size="2x" />
         <span className={styles.logoText}>Movie Finder</span>
       </Link>
-    </div>
+    </h1>
     <div className={styles.searchContainer}>
       <form onSubmit={props.onSubmit}>
         <input

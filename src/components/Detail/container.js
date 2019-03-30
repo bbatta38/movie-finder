@@ -23,7 +23,8 @@ class Container extends Component {
   }
 
   render() {
-    return <Detail {...this.state} />;
+    const { detailInfo, baseURL } = this.props;
+    return <Detail {...this.state} detailInfo={detailInfo} baseURL={baseURL} />;
   }
 }
 

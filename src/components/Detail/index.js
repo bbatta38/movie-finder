@@ -4,10 +4,11 @@ import { actionCreator as movieActions } from "redux/modules/movie";
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    movie: { detailInfo }
+    movie: { detailInfo, baseURL }
   } = state;
   return {
-    detailInfo
+    detailInfo,
+    baseURL
   };
 };
 
