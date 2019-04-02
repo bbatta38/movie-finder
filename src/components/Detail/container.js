@@ -4,7 +4,8 @@ import Detail from "./presenter";
 
 class Container extends Component {
   state = {
-    loading: true
+    loading: true,
+    tempAverage: 0
   };
   static propTypes = {
     getDetail: PropTypes.func.isRequired
@@ -20,11 +21,24 @@ class Container extends Component {
         loading: false
       });
     }
+    setTimeout(() => {
+      this.setState({
+        ...this.state,
+        tempAverage: nextProps.detailInfo.vote_average
+      });
+    }, 500);
   }
 
   render() {
     const { detailInfo, baseURL } = this.props;
-    return <Detail {...this.state} detailInfo={detailInfo} baseURL={baseURL} />;
+    return (
+      <Detail
+        {...this.state}
+        tempAverage={this.state.tempAverage}
+        detailInfo={detailInfo}
+        baseURL={baseURL}
+      />
+    );
   }
 }
 

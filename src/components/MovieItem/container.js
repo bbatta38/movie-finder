@@ -17,17 +17,11 @@ class Container extends Component {
     genre_ids: PropTypes.array.isRequired
   };
   render() {
-    const { temp_average, genreName } = this.state;
-    return (
-      <MovieItem
-        {...this.props}
-        temp_average={temp_average}
-        genreName={genreName}
-      />
-    );
+    const { genreName } = this.state;
+    return <MovieItem {...this.props} genreName={genreName} />;
   }
   componentDidMount() {
-    const { vote_average, genre_ids, genres } = this.props;
+    const { genre_ids, genres } = this.props;
     const genreName = genre_ids.map(genre_id => {
       const nameList = [];
       genres.forEach(genre => {
@@ -40,11 +34,6 @@ class Container extends Component {
     this.setState({
       genreName
     });
-    setTimeout(() => {
-      this.setState({
-        temp_average: vote_average
-      });
-    }, 500);
   }
 }
 

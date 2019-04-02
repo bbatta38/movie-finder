@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CurrencyFormat from "react-currency-format";
+import Circle from "react-circle";
 import Loading from "components/Loading";
 import styles from "./styles.scss";
 
@@ -34,10 +35,32 @@ const Detail = props => {
             />
           </div>
           <div className={styles.infoList}>
-            <h3 className={styles.title}>{detailInfo.original_title}</h3>
+            <div className={styles.titleContainer}>
+              <h3 className={styles.title}>
+                <p>{detailInfo.title}</p>
+                <p className={styles.original}>{detailInfo.original_title}</p>
+              </h3>
+              <p className={styles.vote}>
+                <Circle
+                  animate={true} // Boolean: Animated/Static progress
+                  animationDuration="1s" // String: Length of animation
+                  responsive={true} // Boolean: Make SVG adapt to parent size
+                  size="20" // String: Defines the size of the circle.
+                  lineWidth="50" // String: Defines the thickness of the circle's stroke.
+                  progress={props.tempAverage * 10} // String: Update to change the progress and percentage.
+                  progressColor="#17A398" // String: Color of "progress" portion of circle.
+                  bgColor="#3943B7"
+                  roundedStroke={true} // Boolean: Rounded/Flat line ends
+                  showPercentage={false} // Boolean: Show/hide percentage.
+                  showPercentageSymbol={false} // Boolean: Show/hide only the "%" symbol.
+                />
+                <span>{detailInfo.vote_average}</span>
+              </p>
+            </div>
             <div className={styles.info}>
-              <p className={styles.vote}>{detailInfo.vote_average}</p>
-              <p className={styles.date}>{detailInfo.release_date}</p>
+              <p className={styles.date}>{`RELEASED DATE: ${
+                detailInfo.release_date
+              }`}</p>
               <p className={styles.overview}>{detailInfo.overview}</p>
               <p className={styles.homepage}>
                 <a href={detailInfo.homepage}>{detailInfo.homepage}</a>
@@ -70,7 +93,7 @@ Detail.propTypes = {
     belongs_to_collection: PropTypes.object,
     budget: PropTypes.number.isRequired,
     genres: PropTypes.array.isRequired,
-    homepage: PropTypes.string.isRequired,
+    homepage: PropTypes.string,
     original_language: PropTypes.string.isRequired,
     original_title: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,

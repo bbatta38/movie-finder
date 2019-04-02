@@ -31,7 +31,7 @@ const MovieItem = props => {
               responsive={true} // Boolean: Make SVG adapt to parent size
               size="100" // String: Defines the size of the circle.
               lineWidth="50" // String: Defines the thickness of the circle's stroke.
-              progress={props.temp_average * 10} // String: Update to change the progress and percentage.
+              progress={props.vote_average * 10} // String: Update to change the progress and percentage.
               progressColor="#17A398" // String: Color of "progress" portion of circle.
               bgColor="transparents"
               roundedStroke={true} // Boolean: Rounded/Flat line ends

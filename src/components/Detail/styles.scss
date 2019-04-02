@@ -3,7 +3,7 @@
 }
 
 .container {
-  padding: 0 20px;
+  padding: 0 25px;
   .background-container {
     position: fixed;
     transform: translateY(-50%);
@@ -14,7 +14,7 @@
     .background {
       width: 100%;
       filter: blur(30px);
-      opacity: 0.5;
+      opacity: 0.1;
     }
   }
   .info-container {
@@ -22,13 +22,62 @@
     display: flex;
     justify-content: center;
     .img-container {
+      min-width: 30%;
       img {
         width: 100%;
+        box-shadow: 8px 7px 9px 0px #00000059;
       }
     }
     .info-list {
       padding-left: 20px;
       flex-shrink: 2;
+      color: #c7c6c6;
+      .title-container {
+        display: flex;
+        align-items: center;
+        .title {
+          font-size: $large-font-size;
+          font-family: $title-font;
+          color: white;
+          .original {
+            color: #c7c6c6;
+            margin-top: 8px;
+            font-size: $normal-font-size;
+            font-family: $title-font;
+          }
+        }
+        .vote {
+          position: relative;
+          margin-left: 20px;
+          width: 50px;
+          span {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .info {
+        position: relative;
+        margin-top: 30px;
+        p {
+          margin-top: 10px;
+          font-size: $normal-font-size;
+        }
+        .overview {
+          line-height: $big-font-size;
+        }
+        .homepage {
+        }
+        .genres {
+        }
+        .boxoffice {
+        }
+        .revenue {
+        }
+      }
     }
   }
 }
