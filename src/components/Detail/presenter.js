@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import CurrencyFormat from "react-currency-format";
 import Circle from "react-circle";
+import Moment from "react-moment";
 import Loading from "components/Loading";
+import Reviews from "components/Reviews";
 import styles from "./styles.scss";
 
 const Detail = props => {
@@ -42,43 +44,83 @@ const Detail = props => {
               </h3>
               <p className={styles.vote}>
                 <Circle
-                  animate={true} // Boolean: Animated/Static progress
-                  animationDuration="1s" // String: Length of animation
-                  responsive={true} // Boolean: Make SVG adapt to parent size
-                  size="20" // String: Defines the size of the circle.
-                  lineWidth="50" // String: Defines the thickness of the circle's stroke.
-                  progress={props.tempAverage * 10} // String: Update to change the progress and percentage.
-                  progressColor="#17A398" // String: Color of "progress" portion of circle.
+                  animate={true}
+                  animationDuration="1s"
+                  responsive={true}
+                  size="20"
+                  lineWidth="50"
+                  progress={props.tempAverage * 10}
+                  progressColor="#17A398"
                   bgColor="#3943B7"
-                  roundedStroke={true} // Boolean: Rounded/Flat line ends
-                  showPercentage={false} // Boolean: Show/hide percentage.
-                  showPercentageSymbol={false} // Boolean: Show/hide only the "%" symbol.
+                  roundedStroke={true}
+                  showPercentage={false}
+                  showPercentageSymbol={false}
                 />
                 <span>{detailInfo.vote_average}</span>
               </p>
             </div>
             <div className={styles.info}>
-              <p className={styles.date}>{`RELEASED DATE: ${
-                detailInfo.release_date
-              }`}</p>
               <p className={styles.overview}>{detailInfo.overview}</p>
-              <p className={styles.homepage}>
-                <a href={detailInfo.homepage}>{detailInfo.homepage}</a>
+              <p>
+                <span className={styles.title}>Release date</span>
+                <span>
+                  <Moment format="MMMM YYYY">{detailInfo.release_date}</Moment>
+                </span>
               </p>
-              <p className={styles.genres}>
-                {detailInfo.genres.map(genre => genre.name).join(", ")}
+              <p>
+                <span className={styles.title}>Budget</span>
+                <span>
+                  <CurrencyFormat
+                    value={detailInfo.budget}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$ "}
+                  />
+                </span>
               </p>
-              <p className={styles.boxoffice}>{detailInfo.popularity}</p>
-              <p className={styles.revenue}>
-                <CurrencyFormat
-                  value={detailInfo.revenue}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$ "}
-                />
+              <p>
+                <span className={styles.title}>Runtime</span>
+                <span>{`${detailInfo.runtime} minutes`}</span>
+              </p>
+              <p
+                className={styles.homepage}
+                style={detailInfo.homepage ? { "": "" } : { display: "none" }}
+              >
+                <span className={styles.title}>Homepage</span>
+                <span>
+                  <a href={detailInfo.homepage}>{detailInfo.homepage}</a>
+                </span>
+              </p>
+              <p>
+                <span className={styles.title}>Genres</span>
+                <span>
+                  {detailInfo.genres.map(genre => genre.name).join(", ")}
+                </span>
+              </p>
+              <p>
+                <span className={styles.title}>Status</span>
+                <span>{detailInfo.status}</span>
+              </p>
+              <p>
+                <span className={styles.title}>Popularity</span>
+                <span>{detailInfo.popularity}</span>
+              </p>
+              <p>
+                <span className={styles.title}>Revenue</span>
+                <span>
+                  <CurrencyFormat
+                    value={detailInfo.revenue}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$ "}
+                  />
+                </span>
               </p>
             </div>
           </div>
+        </div>
+        <div>
+          <Reviews />
         </div>
       </div>
     );
