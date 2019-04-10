@@ -7,6 +7,7 @@ const API_KEY = "bee0d63d5bdfa55d91c5a69bf156a26a";
 const MOVIE_LIST = "MOVIE_LIST";
 const DETAIL_INFO = "DETAIL_INFO";
 const GENRES = "GENRES";
+const REVIEW = "REVIEW";
 
 // action creator
 
@@ -28,6 +29,13 @@ function setGenres(genres) {
   return {
     type: GENRES,
     genres
+  };
+}
+
+function setReview(review) {
+  return {
+    type: REVIEW,
+    review
   };
 }
 
@@ -78,9 +86,23 @@ function getGenres() {
     .then(json => json.genres);
 }
 
+function getReview(id) {
+  return (dispatch, getState) => {
+    const {
+      movie: { reviewPage }
+    } = getState();
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=${reviewPage}`
+    )
+      .then(response => response.json())
+      .then(json => dispatch(setReview(json)));
+  };
+}
+
 // initialState
 const initialState = {
   pageNum: 1,
+  reviewPage: 1,
   isAdult: true,
   baseURL: "http://image.tmdb.org/t/p/",
   genres: []
@@ -95,6 +117,8 @@ const reducer = (state = initialState, action) => {
       return applyDetailInfo(state, action);
     case GENRES:
       return applyGenres(state, action);
+    case REVIEW:
+      return applyReview(state, action);
     default:
       return state;
   }
@@ -126,11 +150,20 @@ function applyGenres(state, action) {
   };
 }
 
+function applyReview(state, action) {
+  const { review } = action;
+  return {
+    ...state,
+    review
+  };
+}
+
 // export
 
 const actionCreator = {
   getMovies,
-  getDetail
+  getDetail,
+  getReview
 };
 
 export { actionCreator };

@@ -11,7 +11,7 @@ const Detail = props => {
   if (props.loading) {
     return <LoadingRender />;
   } else {
-    const { detailInfo } = props;
+    const { detailInfo, match } = props;
     return (
       <div className={styles.container}>
         <div className={styles.backgroundContainer}>
@@ -120,7 +120,7 @@ const Detail = props => {
           </div>
         </div>
         <div>
-          <Reviews />
+          <Reviews match={match} />
         </div>
       </div>
     );

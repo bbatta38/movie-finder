@@ -30,13 +30,14 @@ class Container extends Component {
   }
 
   render() {
-    const { detailInfo, baseURL } = this.props;
+    const { detailInfo, baseURL, match } = this.props;
     return (
       <Detail
         {...this.state}
         tempAverage={this.state.tempAverage}
         detailInfo={detailInfo}
         baseURL={baseURL}
+        match={match}
       />
     );
   }
