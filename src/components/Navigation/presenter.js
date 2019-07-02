@@ -8,7 +8,7 @@ import { faTicketAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 const Navigation = props => (
   <header className={styles.container}>
     <h1 className={styles.logo}>
-      <Link to="/">
+      <Link to="/movie-finder/">
         <FontAwesomeIcon icon={faTicketAlt} color="white" size="2x" />
         <span className={styles.logoText}>Movie Finder</span>
       </Link>

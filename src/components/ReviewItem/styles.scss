@@ -1,0 +1,23 @@
+.review-list {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  .author {
+    word-wrap: break-word;
+    width: 10%;
+    font-size: $small-font-size;
+    font-family: $title-font;
+    color: $title-color;
+  }
+  .content-wrapper {
+    width: 80%;
+    flex: 1;
+    min-width: 0;
+    .content {
+      padding-left: 10px;
+      line-height: 1.5;
+      color: $basic-color;
+      font-size: $small-font-size;
+    }
+  }
+}

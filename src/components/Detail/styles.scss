@@ -21,6 +21,9 @@
     position: relative;
     display: flex;
     justify-content: center;
+    @include breakpoint("phone") {
+      display: block;
+    }
     .img-container {
       flex: 1;
       min-width: 30%;
@@ -34,6 +37,10 @@
       flex-grow: 3;
       padding-left: 20px;
       color: $basic-color;
+      @include breakpoint("phone") {
+        padding-left: 0;
+        margin-top: 20px;
+      }
       .title-container {
         display: flex;
         align-items: center;

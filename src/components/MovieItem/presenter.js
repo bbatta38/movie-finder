@@ -8,7 +8,7 @@ const MovieItem = props => {
   const { baseURL, genreName } = props;
   return (
     <li className={styles.movie}>
-      <Link to={`/detail/${props.id}`}>
+      <Link to={`/movie-finder/detail/${props.id}`}>
         <div className={styles.movieImgWrap}>
           <img
             src={

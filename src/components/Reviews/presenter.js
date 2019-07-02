@@ -23,14 +23,22 @@ const RenderLoading = () => (
   </div>
 );
 
-const RenderReviews = props => (
-  <div className={styles.reviewContainer}>
-    <ul>
-      {props.review.results.map(review => {
-        return <ReviewItem {...review} key={review.id} />;
-      })}
-    </ul>
-  </div>
-);
+const RenderReviews = props => {
+  const { results } = props.review;
+  if (results.length === 0) {
+    return "";
+  } else {
+    return (
+      <div className={styles.reviewContainer}>
+        <h3 className={styles.review}>Review</h3>
+        <ul className={styles.reviewList}>
+          {results.map(review => {
+            return <ReviewItem {...review} key={review.id} />;
+          })}
+        </ul>
+      </div>
+    );
+  }
+};
 
 export default Reviews;

@@ -117,10 +117,8 @@ const Detail = props => {
                 </span>
               </p>
             </div>
+            <Reviews match={match} />
           </div>
-        </div>
-        <div>
-          <Reviews match={match} />
         </div>
       </div>
     );
@@ -130,29 +128,29 @@ const Detail = props => {
 Detail.propTypes = {
   loading: PropTypes.bool.isRequired,
   detailInfo: PropTypes.shape({
-    adult: PropTypes.bool.isRequired,
-    backdrop_path: PropTypes.string.isRequired,
+    adult: PropTypes.bool,
+    backdrop_path: PropTypes.string,
     belongs_to_collection: PropTypes.object,
-    budget: PropTypes.number.isRequired,
-    genres: PropTypes.array.isRequired,
+    budget: PropTypes.number,
+    genres: PropTypes.array,
     homepage: PropTypes.string,
-    original_language: PropTypes.string.isRequired,
-    original_title: PropTypes.string.isRequired,
-    overview: PropTypes.string.isRequired,
-    popularity: PropTypes.number.isRequired,
-    poster_path: PropTypes.string.isRequired,
+    original_language: PropTypes.string,
+    original_title: PropTypes.string,
+    overview: PropTypes.string,
+    popularity: PropTypes.number,
+    poster_path: PropTypes.string,
     production_companies: PropTypes.array,
     production_countries: PropTypes.array,
-    release_date: PropTypes.string.isRequired,
-    revenue: PropTypes.number.isRequired,
-    runtime: PropTypes.number.isRequired,
-    spoken_languages: PropTypes.array.isRequired,
-    status: PropTypes.string.isRequired,
-    tagline: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    video: PropTypes.bool.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    vote_count: PropTypes.number.isRequired
+    release_date: PropTypes.string,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
+    spoken_languages: PropTypes.array,
+    status: PropTypes.string,
+    tagline: PropTypes.string,
+    title: PropTypes.string,
+    video: PropTypes.bool,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number
   })
 };
 

@@ -1,3 +1,15 @@
 .loading-container {
   @include loadingContainer;
 }
+
+.review-container {
+  margin-top: 60px;
+  .review {
+    font-family: $title-font;
+    font-size: $big-font-size;
+    color: $basic-color;
+  }
+  .review-list {
+    margin-top: 20px;
+  }
+}

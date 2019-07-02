@@ -15,9 +15,9 @@ const App = props => [
 
 const PublicRoute = props => (
   <Switch>
-    <Route exact path="/" component={MovieList} />
-    <Route exact path="/search/:query" render={() => "search"} />
-    <Route exact path="/detail/:id" component={Detail} />
+    <Route exact path="/movie-finder/" component={MovieList} />
+    <Route exact path="/movie-finder/search/:query" render={() => "search"} />
+    <Route exact path="/movie-finder/detail/:id" component={Detail} />
   </Switch>
 );
 
