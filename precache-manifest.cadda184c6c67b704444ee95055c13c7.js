@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/movie-finder/static/css/main.dc1c6d07.chunk.css"
   },
   {
-    "revision": "3ae404a195295c4048c3d65ba91eda51",
+    "revision": "c00415d8cb09f3c58e07e0e9ffd44598",
     "url": "/movie-finder/index.html"
   }
 ];
