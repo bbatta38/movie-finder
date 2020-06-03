@@ -104,7 +104,7 @@ const initialState = {
   pageNum: 1,
   reviewPage: 1,
   isAdult: true,
-  baseURL: "http://image.tmdb.org/t/p/",
+  baseURL: "https://image.tmdb.org/t/p/",
   genres: []
 };
 // reducer
