@@ -4,11 +4,11 @@ import Circle from "react-circle";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 
-const MovieItem = props => {
+const MovieItem = (props) => {
   const { baseURL, genreName } = props;
   return (
     <li className={styles.movie}>
-      <Link to={`/movie-finder/detail/${props.id}`}>
+      <Link to={`/detail/${props.id}`}>
         <div className={styles.movieImgWrap}>
           <img
             src={
@@ -59,7 +59,7 @@ MovieItem.propTypes = {
   title: PropTypes.string.isRequired,
   video: PropTypes.bool.isRequired,
   vote_average: PropTypes.number.isRequired,
-  vote_count: PropTypes.number.isRequired
+  vote_count: PropTypes.number.isRequired,
 };
 
 export default MovieItem;
