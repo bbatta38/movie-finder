@@ -51,7 +51,7 @@
     "react-app-polyfill": "^0.2.2",
     "react-circle": "^1.1.1",
     "react-currency-format": "^1.0.0",
-    "react-dev-utils": "^8.0.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.8.5",
     "react-lazy-load": "^3.0.13",
     "react-moment": "^0.8.4",
